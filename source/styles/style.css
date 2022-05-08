@@ -1,0 +1,578 @@
+/* Geral */
+
+/* Mobile First */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%; /* Mudando a fonte padrão de 16px para 10px por % usando regra de três, assim fica mais fácil utilizar o rem 
+  100% = 16px 62,5% = 10px. Rem facilita acessibilidade. É tipo um em mas o r vem do root, pega da raiz e não do pai. */
+  --hue: 0;
+  --primary-color: hsl(var(--hue), 65%, 48%);
+  --primary-color-hover: hsl(var(--hue), 72%, 30%);
+  --headline: hsl(210, 11%, 15%);
+  --background1: hsl(var(--hue), 100%, 95%);
+  --background2: hsl(var(--hue), 100%, 98%);
+  --border: hsl(var(--hue), 58%, 84%);
+  --button-border: hsl(var(--hue), 72%, 38%);
+  --button-border-hover: hsl(var(--hue), 75%, 17%);
+  --nav-height: 7.2rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans";
+  font-size: 1.6rem;
+  text-align: center;
+  overflow: overlay;
+  background: var(--background2);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: min(50rem, 100%);
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+section {
+  padding-block: 5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.button {
+  background-color: var(--primary-color);
+  border-radius: 4rem;
+  border-bottom: 4px inset var(--button-border);
+  color: #fff;
+  margin-bottom: 4rem;
+  padding: 2rem 3.2rem;
+  width: 26.3rem;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  margin-inline: auto;
+  cursor: pointer;
+}
+
+.button:hover {
+  letter-spacing: 0.2rem;
+  background-color: var(--primary-color-hover);
+  border-bottom: 4px inset var(--button-border-hover);
+}
+
+nav .menu .button {
+  padding: 2rem 3.2rem;
+  width: 26.3rem;
+  border: none;
+}
+
+nav .menu .button:hover {
+  background-color: var(--border);
+}
+/**/
+
+/* Cabeçalho */
+
+h1,
+h4,
+h2 {
+  font-family: "Indie Flower";
+}
+
+section header h1 {
+  font-size: 3.4rem;
+  color: var(--primary-color);
+  line-height: 130%;
+  margin-bottom: 1.6rem;
+}
+
+section header h4 {
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: 0.08rem;
+  margin-bottom: 1.6rem;
+  color: var(--headline);
+}
+
+section header h2 {
+  font-size: 3rem;
+  line-height: 3.9rem;
+  color: var(--primary-color);
+  margin-bottom: 6rem;
+}
+
+section .content p {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--headline);
+}
+
+#home {
+  padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home p {
+  font-size: 1.8rem;
+  margin-bottom: 3.2rem;
+}
+
+#home .stats {
+  width: 100%;
+  padding-block: 4rem;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  background-color: var(--background2);
+  border: 1px solid var(--border);
+  justify-content: center;
+  gap: 6rem;
+  border-radius: 0.6rem;
+}
+
+#home .stat p {
+  margin: 0;
+  color: var(--primary-color);
+  line-height: 150%;
+  font-weight: 600;
+}
+
+#home .stat h3 {
+  font-size: 4.8rem;
+  color: var(--headline);
+  line-height: 130%;
+  margin-bottom: 0.4rem;
+}
+
+#home::before {
+  content: "";
+  width: 100%;
+  height: calc(108rem + var(--nav-height));
+  background-color: var(--background1);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/**/
+
+/* Menu/Navegação */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: 100vw;
+}
+
+nav .menu,
+nav .close-menu {
+  position: fixed;
+}
+
+nav a.logo {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+nav a.logo svg {
+  transform: translateY(6px);
+}
+
+nav svg {
+  color: var(--primary-color);
+}
+
+nav .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav.scroll {
+  background: var(--primary-color);
+}
+
+nav.scroll a.logo {
+  color: #fff;
+}
+
+nav.scroll svg {
+  color: #fff;
+}
+
+nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* */
+
+/* Menu Expanded (Toggle) */
+
+.menu,
+.close-menu,
+body.menu-expanded .open-menu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  top: -100vh;
+}
+
+body.menu-expanded .menu,
+body.menu-expanded .close-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  top: 0;
+}
+
+.menu {
+  transform: translateY(100%);
+}
+
+body.menu-expanded > :not(nav) {
+  visibility: hidden;
+}
+
+body.menu-expanded {
+  overflow: hidden;
+}
+
+body.menu-expanded .menu {
+  top: 0;
+  left: 0;
+  background: var(--primary-color);
+  width: 100vw;
+  height: 100vh;
+  padding-top: var(--nav-height);
+  transform: translateY(0);
+  transition: transform 300ms;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+}
+
+.menu ul:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+  margin-top: 6rem;
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+}
+
+.menu ul li a {
+  color: #fff;
+}
+
+.menu .button {
+  background: #fff;
+  border-radius: 4rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  width: 30rem;
+  margin: 4.8rem 0 8rem 0;
+}
+
+body.menu-expanded nav svg {
+  color: #ffffff;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded nav button {
+  position: relative;
+  z-index: 100;
+  color: white;
+  transition: color 300ms;
+}
+/* */
+
+/* Serviços */
+
+#services .card {
+  padding: 2.4rem;
+  text-align: left;
+  background: var(--background1);
+  border: 1px solid #fffaf1;
+  border-radius: 0.6rem;
+}
+
+#services .card h3 {
+  color: var(--primary-color-hover);
+  margin-block: 1.6rem;
+}
+
+#services .card svg {
+  color: var(--primary-color-hover);
+}
+
+#services .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+/* */
+
+/* About h2 */
+
+#about {
+  text-align: left;
+  background-color: #f9f9f9;
+}
+
+#about header h4 {
+  text-align: center;
+}
+
+#about header h2,
+#contact header h2 {
+  margin-bottom: 2.4rem;
+}
+
+#about .content p {
+  margin: 2.4rem 0 3rem 0;
+}
+
+#about .content img,
+#contact img {
+  border-radius: 0.6rem;
+  box-shadow: 0 0 0.5rem var(--border);
+}
+
+/**/
+
+/* Contato */
+
+#contact {
+  text-align: left;
+}
+
+#contact header {
+  margin-bottom: 3.2rem;
+}
+
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+#contact svg {
+  color: var(--primary-color);
+}
+
+#contact .button {
+  margin: 0;
+  margin-bottom: 3.2rem;
+}
+
+/* */
+
+/* Rodapé */
+
+footer {
+  background-color: var(--primary-color);
+  padding-block: 6rem;
+  text-align: left;
+  color: #fff;
+}
+
+footer a.logo {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 2.4rem;
+}
+
+footer p {
+  color: #fff;
+  line-height: 2;
+  margin-bottom: 3.2rem;
+}
+
+footer .social-links {
+  justify-content: flex-start;
+}
+
+#backToTopButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY();
+  transition: 200ms;
+  color: var(--primary-color);
+}
+
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Design Responsivo Para PC */
+
+@media (min-width: 1024px) {
+  /* Geral */
+  .wrapper {
+    width: min(112rem, 100%);
+  }
+  /* Navigation */
+
+  /* Reset */
+  nav#navigation .wrapper * {
+    margin: 0;
+    padding: 0;
+    visibility: initial;
+    display: initial;
+    flex-direction: initial;
+    opacity: initial;
+    position: initial;
+    font-size: initial;
+    font-weight: initial;
+    transform: initial;
+    color: initial;
+    background-color: initial;
+  }
+
+  nav#navigation a.logo svg {
+    transform: translateY(6px);
+  }
+
+  nav#navigation .logo path {
+    color: var(--primary-color);
+  }
+
+  nav#navigation .close-menu,
+  nav#navigation .open-menu,
+  nav#navigation .social-links {
+    display: none;
+  }
+
+  nav#navigation .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    pointer-events: all;
+  }
+
+  nav#navigation .menu ul:nth-child(1) {
+    display: flex;
+    gap: 3.2rem;
+  }
+
+  nav#navigation .menu ul li a {
+    color: var(--primary-color);
+    opacity: 0.7;
+  }
+
+  nav#navigation .menu a.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2.4rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 4rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    text-transform: uppercase;
+  }
+
+  nav#navigation.scroll .menu ul li a {
+    color: #fff;
+    opacity: 1;
+  }
+
+  nav#navigation.scroll path {
+    color: #fff;
+  }
+
+  nav#navigation.scroll .menu a.button {
+    color: #fff;
+    border: 1px solid #fff;
+  }
+
+  nav#navigation .menu li a:hover {
+    opacity: 1;
+    font-weight: 700;
+  }
+
+  nav#navigation .menu li a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    position: relative;
+    bottom: -2rem;
+    left: -0.5rem;
+    display: block;
+    transition: 0.2s;
+  }
+
+  nav#navigation.scroll .menu li a::after {
+    background-color: #fff;
+  }
+
+  nav#navigation .menu li a:hover::after {
+    padding-inline: 0.8rem;
+    width: 100%;
+  }
+}
