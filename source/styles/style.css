@@ -576,10 +576,15 @@ footer .social-links {
   nav#navigation.scroll .menu a.button:hover {
     border: 1px solid #fff;
   }
-  nav#navigation .menu a.button.active,
+  nav#navigation .menu a.button.active {
+    background-color: #e22121;
+    color: #fff;
+    border: none;
+  }
+
   nav#navigation .menu a.button:hover {
     background-color: var(--primary-color);
-    border: #fff;
+    border: 1px solid #fff;
     color: #fff;
   }
 
@@ -606,6 +611,7 @@ footer .social-links {
   }
 
   nav#navigation .menu li a:active::after,
+  nav#navigation .menu li a.active::after,
   nav#navigation .menu li a:hover::after {
     padding-inline: 0.8rem;
     width: 100%;
@@ -623,6 +629,7 @@ footer .social-links {
     transition: 0.2s;
   }
   nav#navigation.scroll .menu li a:active::after,
+  nav#navigation.scroll .menu li a.active::after,
   nav#navigation.scroll .menu li a:hover::after {
     padding-inline: 0.8rem;
     width: 100%;
